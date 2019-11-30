@@ -10,7 +10,7 @@
     var canvas;
     var canvasContext;
     var ballX = 50;
-    var ballSpeedX = 10;
+    var ballSpeedX = 7;
 
     window.onload = function() {
       canvas = document.getElementById("gameCanvas");
@@ -37,12 +37,19 @@
       // Paddle Left
       drawRect(0, 210, 10, 100, "white");
       // Ball
-      drawRect(ballX, 100, 10, 10, "red");
+      drawCircle(ballX, 150, 10, "red");
     }
 
     function drawRect(leftX, topY, height, width, color) {
       canvasContext.fillStyle = color;
       canvasContext.fillRect(leftX, topY, height, width);
+    }
+
+    function drawCircle(centerX, centerY, radius, color) {
+      canvasContext.fillStyle = color;
+      canvasContext.beginPath();
+      canvasContext.arc(centerX, centerY, radius, 0, Math.PI * 2, true);
+      canvasContext.fill();
     }
   </script>
 </html>
