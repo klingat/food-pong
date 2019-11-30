@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Food Pong 🌭</title>
+    <meta charset="utf-8" />
+  </head>
+  <h2>Food Pong 🌭</h2>
+  <canvas id="gameCanvas" width="800" height="600"></canvas>
+
+  <script>
+    var canvas;
+    var canvasContext;
+    var ballX = 50;
+    var ballSpeedX = 10;
+
+    window.onload = function() {
+      canvas = document.getElementById("gameCanvas");
+      canvasContext = canvas.getContext("2d");
+
+      var framesPerSecond = 30;
+      setInterval(function() {
+        moveEverything();
+        drawEverything();
+      }, 1000 / framesPerSecond);
+    };
+
+    function moveEverything() {
+      console.log("moving...");
+      ballX = ballX + ballSpeedX;
+      if (ballX > canvas.width || ballX < 0) {
+        ballSpeedX = -ballSpeedX;
+      }
+    }
+
+    function drawEverything() {
+      // Background
+      drawRect(0, 0, canvas.width, canvas.height, "black");
+      // Paddle Left
+      drawRect(0, 210, 10, 100, "white");
+      // Ball
+      drawRect(ballX, 100, 10, 10, "red");
+    }
+
+    function drawRect(leftX, topY, height, width, color) {
+      canvasContext.fillStyle = color;
+      canvasContext.fillRect(leftX, topY, height, width);
+    }
+  </script>
+</html>
